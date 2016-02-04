@@ -1,0 +1,22 @@
+{
+  "name": "pholance-blog",
+  "description": "my private knownlege site",
+  "main": "index.js",
+  "authors": [
+    "pholance"
+  ],
+  "license": "GPLV3",
+  "keywords": [
+    "knownlege"
+  ],
+  "homepage": "https://github.com/pholance/pholance.github.io",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

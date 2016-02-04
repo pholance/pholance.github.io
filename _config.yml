@@ -1,0 +1,3 @@
+exclude: ['bower.json', 'LICENSE', 'package.json', 'README.md']
+kramdown:
+   input: GFM
