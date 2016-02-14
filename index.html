@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="zh">
 
@@ -9,17 +11,42 @@
 </head>
 
 <body>
-  <header class="am-topbar am-topbar-inverse">
-    <h1 class="am-topbar-brand">知识库</h1>
-
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
-
-    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-      <ul class="am-nav am-nav-pills am-topbar-nav">
-        <li class="active"><a href=".">首页</a></li>
-      </ul>
+  <div class="am-container am-margin-vertical-lg">
+    <div class="am-g">
+      <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+        <section class="am-panel am-panel-default">
+          <header class="am-panel-hd">
+            <h3 class="am-panel-title">JavaEE</h3>
+          </header>
+          <ul class="am-list">
+            {% for page in site.categories.JavaEE %}
+            <li>
+              <a href="{{page.url}}">
+                <div class="am-list-item-hd">{{page.title}}</div>
+                <div class="am-list-item-text">{{page.date | date: "%Y年%m月%d日"}}</div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
+      <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+        <section class="am-panel am-panel-default">
+          <header class="am-panel-hd">
+            <h3 class="am-panel-title">其它</h3>
+          </header>
+          <ul class="am-list">
+            {% for page in site.categories.Other %}
+            <li>
+              <a href="{{page.url}}">
+                <div class="am-list-item-hd">{{page.title}}</div>
+                <div class="am-list-item-text">{{page.date | date: "%Y年%m月%d日"}}</div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
     </div>
-  </header>
+  </div>
 </body>
 
 </html>

@@ -1,10 +1,12 @@
 ---
 layout: default
 title: Spring IoC 容器的配置与使用
+category: JavaEE
+tags:
+  - springframework
 ---
-
-[TOC]
-
+* TOC
+{:toc}
 Spring框架很庞大，但IoC容器是核心。IoC是用来管理Spring Bean的，学习IoC其实就是学习Spring Bean的定义和使用。
 
 # 1. 定义Bean
@@ -20,13 +22,12 @@ xml是最基本的定义方式，即使是只用标注不用xml也可以通过xm
 最基本的xml文件是这样的：
 
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://www.springframework.org/schema/beans
-                                http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <bean id="..." class="...">
     <!-- bean相关配置 -->
@@ -47,6 +48,7 @@ xml是最基本的定义方式，即使是只用标注不用xml也可以通过xm
 bean 元素是 IoC 配置最复杂的元素，基本上 xml 配置的内容分为两大类，bean 元素是一类，其它的统统是一类。从官方文档上就能看出来，bean 元素也是用一个单独的章节加以说明。可见其复杂程度，官方文档又没有集中的列出它的属性和子元素，所以很容易看到后面就忘了前面。写这篇文章的目的其实就是总结 bean 元素的使用。
 
 定义一个 bean 一般需要包含以下几类数据：
+
 - **全限定类名。** 注意这必须是真正的实现类的类名，你绝不能指定一个接口。
 - **Bean 行为的配置元素。** 用于描述 Bean 在容器中的行为，如范围、生命周期回调以及其它。
 - 对其它 bean 的引用，这种引用也称之为 **协作** 或者 **依赖** 。
@@ -90,10 +92,11 @@ scope          | protype,session,application,request | 生命期
 理论上`id`和`name`属性可以忽略，但如果真不指定就没办法调用这个bean了。
 
 > **内部类名。** 如果你要为一个静态的嵌套类配置bean定义的话，你必须使用双重类名。
-
-> 举个例子，如果在`com.example`包中有一个名叫`Foo`的类，而这个`Foo`类又有一个声明为`static`的内部类`Bar`，那么`class`属性的值就应该是... com.example.Foo$Bar
-
-> 注意字符`$`是用在内部与外部类名之间的分隔符。
+> 举个例子，如果在`com.example`包中有一个名叫`Foo`的类，而这个`Foo`类又有一个声明为`static`的内部类`Bar`，那么`class`属性的值就应该是...
+```
+>com.example.Foo$Bar
+```
+>注意字符`$`是用在内部与外部类名之间的分隔符。
 
 ##### 通过静态工厂方法构建实例
 当需要通过一个静态工厂方法来构建Bean的时候，你可以使用`class`属性指定包含了静态工厂方法的类并用`factory-method`属性指定静态工厂方法名。
@@ -146,6 +149,7 @@ scope          | protype,session,application,request | 生命期
 这种定义方式的意义在于可以通过一个Bean来管理其它Bean的创建以及依赖。
 
 ### 1.1.2 其它元素
+
 #### 定义别名：alias
 使用alias在bean定义之外的任何地方为这个bean定义别名。定义的方式为：
 
