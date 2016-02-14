@@ -1,2 +1,5 @@
 exclude: ['bower.json', 'LICENSE', 'package.json', 'README.md']
 highlighter: pygments
+kramdown:
+   input: GFM
+   hard_wrap: true
